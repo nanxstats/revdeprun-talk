@@ -281,15 +281,11 @@ For a top 20 CRAN package, less than the cost of lunch
 
 ## Security matters
 
-::: {.callout-warning}
-## Never run reverse dependency checks on your local machine
+**Never run reverse dependency checks on your local machine**
 
-Reverse dependency checks execute arbitrary third-party code.
-
-Always use disposable cloud instances or containers.
-
-Destroy them when done.
-:::
+- Reverse dependency checks execute arbitrary third-party code
+- Always use disposable cloud instances or containers
+- Destroy them when done
 
 ## Future directions
 
