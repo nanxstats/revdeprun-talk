@@ -1,6 +1,6 @@
 ---
-title: "Reverse Dependency Checks for Everyone"
-subtitle: "Event Name"
+title: "Reverse dependency checks <br> for everyone"
+subtitle: "" # Event name?
 author: "Nan Xiao"
 date: "November 17, 2025"
 embed-resources: true
