@@ -242,6 +242,8 @@ Cloud instance specs:
 
 02:12:00 - Setup complete. Time for the real work.
 
+![The moment checking begins](images/start.png){fig-align="center" width="60%"}
+
 ## Timeline: Checking phase
 
 02:12:00 - Started checking all 1,723 packages, twice.
@@ -259,7 +261,7 @@ Cloud instance specs:
 - Setup time: 2 hours 12 minutes
 - Checking time: 6 hours 43 minutes
 
-For a top 20 CRAN package, less than the cost of lunch
+![Crossing the finish line](images/finish.png){fig-align="center" width="60%"}
 
 # Lessons learned
 
@@ -295,9 +297,9 @@ For a top 20 CRAN package, less than the cost of lunch
 ## Future directions
 
 - What about packages with 10,000+ reverse dependencies?
-- Can we optimize the 2+ hour setup phase? `rv`?
-- Can we cache dependency installations across runs?
-- How do we handle Bioconductor packages?
+- Can we optimize the 2+ hour setup phase? [rv](https://github.com/a2-ai/rv)?
+- Can we do nightly runs via CI/CD?
+- Can we improve reporting across different nightly runs?
 
 These are open questions. Contributions welcome.
 
