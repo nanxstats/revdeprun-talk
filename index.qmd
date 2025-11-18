@@ -1,0 +1,39 @@
+---
+title: "Reverse Dependency Checks for Everyone"
+subtitle: "Event Name"
+author: "Nan Xiao"
+date: "November 17, 2025"
+embed-resources: true
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    mainfont: "Lato, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"
+    monofont: "JetBrains Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace"
+    resources:
+      - fonts/Lato-VF.woff2
+      - fonts/Lato-Italic-VF.woff2
+      - fonts/JetBrainsMono-Regular.woff2
+    smaller: true
+    slide-number: true
+    scrollable: true
+title-slide-attributes:
+  data-background-color: "#385898"
+---
+
+# Welcome {background-color="#385898"}
+
+## Outline
+
+TBA
+
+## Workflow
+
+![](images/workflow-phase-1.svg){width=100%}
+
+![](images/workflow-phase-1.svg){width=100%}
+
+# Q&A {background-color="#385898"}
+
+## Resources
+
+TBA
