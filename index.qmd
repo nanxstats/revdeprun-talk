@@ -1,6 +1,6 @@
 ---
-title: "Reverse dependency checks <br> for everyone"
-subtitle: "" # Event name?
+title: "Reverse dependency checks for everyone:"
+subtitle: "Automating R integration testing at cloud scale"
 author: "Nan Xiao"
 date: "November 17, 2025"
 embed-resources: true
@@ -26,8 +26,7 @@ Hi, I'm Nan Xiao (@nanxstats)!
 
 Passionate about writing fast and correct code + developer tooling to achieve that.
 
-Creator of ggsci for R, ggsci for Python, pkglite for R, pkglite for Python,
-and other R and Python packages.
+Creator of ggsci, pkglite, and other R and Python packages.
 
 Work on the intersection of statistical methodology and research software engineering.
 

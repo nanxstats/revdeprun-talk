@@ -4,18 +4,23 @@ $primary: #385898 !default;
 $presentation-title-slide-text-align: left;
 
 #title-slide .title {
-  font-size: 4rem !important;
+  font-size: 3.25rem !important;
   font-weight: 300 !important;
 }
 
+#title-slide .subtitle {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
 #title-slide .quarto-title-author-name {
-  font-size: 2.75rem;
+  font-size: 2.125rem;
   font-weight: 300;
   margin-top: 2rem;
 }
 
 #title-slide .date {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 300;
 }
 
