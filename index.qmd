@@ -1,5 +1,5 @@
 ---
-title: "Reverse dependency checks for everyone:"
+title: "Reverse dependency checks for everyone"
 subtitle: "Automating R integration testing at cloud scale"
 author: "Nan Xiao"
 date: "November 17, 2025"
@@ -16,6 +16,8 @@ format:
     smaller: true
     slide-number: true
     scrollable: false
+    code-line-numbers: false
+    auto-stretch: false
 ---
 
 ## About me
@@ -40,8 +42,8 @@ Passionate about writing fast and correct code + developer tooling to achieve th
 
 ## What makes R unique?
 
-- CRAN has 23,000+ packages. They all need to work together.
-- When you update your package, you must check that downstream packages still work.
+- CRAN has 23,000+ packages: they all need to work together
+- When updating your package, must check that downstream packages still work
 
 From [CRAN Repository Policy](https://cran.r-project.org/web/packages/policies.html):
 
@@ -94,27 +96,27 @@ You need:
 
 ## Existing solutions
 
-- {revdepcheck}: mature but can't use binary repos for Linux on cloud instances
-- {revdepcheck.extras}: detailed improvements but same limitations
+- {revdepcheck}: mature but can't use binary repos for Linux
+- {revdepcheck.extras}: flow and CLI improvements but similar limitations
 - `xfun::rev_check()`: fast parallel checking but doesn't install system dependencies
 
 Each solves part of the problem.
 
 None solve the whole problem for cloud-scale checking **for everyone**.
 
-## xkcd 927: Standards
+## Reinventing the wheel when it matters
 
-![](images/xkcd-927.png){width=65%}
+![xkcd 927: Standards](images/xkcd-927.png){fig-align="center" width="75%"}
 
 # Solution: revdeprun
 
 ## Design goals
 
+**Run one command, get coffee, watch it work.**
+
 - Target audience: CRAN package maintainers with many reverse dependencies
 - Target environment: disposable Ubuntu cloud instances with high CPU count
 - Easy setup: no manual R installation, no complex configuration
-
-Run one command, get coffee, watch it work.
 
 ## The solution
 
@@ -245,7 +247,7 @@ Cloud instance specs:
 
 08:55:00 - Finished. 37 packages reported check diffs.
 
-![All 48 cores at 100% during checking](images/btop.png){width=90%}
+![All 48 cores at 100% during checking](images/btop.png){fig-align="center" width="70%"}
 
 ## Results
 

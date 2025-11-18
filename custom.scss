@@ -11,7 +11,7 @@ $body-bg: #f9f8f3;
 
 #title-slide .subtitle {
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 #title-slide .quarto-title-author-name {
@@ -30,12 +30,18 @@ $body-bg: #f9f8f3;
 }
 
 .reveal h2 {
-  font-size: 2.375rem !important;
+  font-weight: 600 !important;
+  font-size: 3rem !important;
   margin-bottom: 2rem !important;
 }
 
-.reveal .caption {
-  text-align: center;
+.reveal pre {
+  font-size: 1.25rem !important;
+  line-height: 1.45 !important;
+}
+
+.reveal figcaption {
+  text-align: center !important;
 }
 
 .reveal blockquote p {
