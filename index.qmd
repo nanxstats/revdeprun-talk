@@ -109,7 +109,13 @@ None solve the whole problem for cloud-scale checking **for everyone**.
 
 ## Reinvent the wheel when it matters
 
-![xkcd 927: Standards](images/xkcd-927.png){fig-align="center" width="75%"}
+**Pro tip**: Seek product-market fit signals with the right audience.
+
+I benefited from [sharing the news
+](https://stat.ethz.ch/pipermail/r-package-devel/2025q4/012074.html)
+on the r-package-devel mailing list.
+
+![xkcd 927: Standards](images/xkcd-927.png){fig-align="center" width="60%"}
 
 # Solution: revdeprun
 
@@ -128,14 +134,33 @@ None solve the whole problem for cloud-scale checking **for everyone**.
 - Wrap everything in a Rust CLI that handles setup automatically
 - One command from fresh Ubuntu to complete results
 
+## What it does
+
+- Installs the current release version of R for Ubuntu
+- Discovers all reverse dependencies from CRAN metadata
+- Installs system requirements for all reverse dependencies
+- Pre-installs binary dependencies from P3M into `revdep/library/`
+- Runs `xfun::rev_check()` with all available CPU cores
+- Generates summary reports for packages with check diffs
+
+## Workflow
+
+**Phase 1:** Environment setup and dependency installation
+
+![](images/workflow-phase-1.svg){width=100%}
+
+**Phase 2:** Parallel checking of all reverse dependencies
+
+![](images/workflow-phase-2.svg){width=90%}
+
 ## Why Rust CLI?
 
-- Single static binary. No runtime dependencies
-- You can't use R to install R. You can't use Python to install R.
+- R or Python may create circular or complicated runtime situations.
 - Shell scripts get messy fast. No proper error handling, testing, or distribution.
 
 Rust gives you:
 
+- Single static binary. No runtime dependencies.
 - Proper error handling (anyhow)
 - CLI parsing (clap)
 - Progress bars (indicatif)
@@ -175,34 +200,6 @@ revdeprun ~/packages/mypackage_1.2.3.tar.gz
 # Custom workspace
 revdeprun --work-dir /data/workspace https://github.com/USER/PACKAGE.git
 ```
-
-## What it does
-
-- Installs the current release version of R for Ubuntu
-- Discovers all reverse dependencies from CRAN metadata
-- Installs system requirements for all reverse dependencies
-- Pre-installs binary dependencies from P3M into `revdep/library/`
-- Runs `xfun::rev_check()` with all available CPU cores
-- Generates summary reports for packages with check diffs
-
-## Why binary packages matter
-
-- Installing thousands of packages from source would take days
-- Posit Public Package Manager (P3M) provides pre-compiled binaries for Linux
-- pak can install these binaries in minutes instead of hours
-- This is what makes cloud-scale checking practical
-
-## Workflow: Phase 1
-
-Environment setup and dependency installation:
-
-![](images/workflow-phase-1.svg){width=100%}
-
-## Workflow: Phase 2
-
-Parallel checking of all reverse dependencies:
-
-![](images/workflow-phase-2.svg){width=90%}
 
 ## Key crates
 
@@ -278,6 +275,13 @@ Cloud instance specs:
 - Each solution tackles part of it.
 - If many smart people couldn't solve it completely, it's genuinely hard.
 - The devil is in the details: system dependencies, binary repos, parallel checking.
+
+## Binary packages matter
+
+- Installing thousands of packages from source would take days
+- Posit Public Package Manager (P3M) provides pre-compiled binaries for Linux
+- pak can install these binaries in minutes instead of hours
+- This is what makes cloud-scale checking practical
 
 ## What to optimize
 
