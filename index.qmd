@@ -1,6 +1,6 @@
 ---
 title: "Reverse dependency checks for everyone"
-subtitle: "Automating R integration testing at cloud scale"
+subtitle: "Automate R integration testing at cloud scale"
 author: "Nan Xiao"
 date: "November 18, 2025"
 embed-resources: true
@@ -102,23 +102,23 @@ You need:
 
 ## Existing solutions
 
-- `revdepcheck`: mature but can't use binary repos for Linux
-- `revdepcheck.extras`: flow and CLI improvements but similar limitations
+- `revdepcheck`: can't use binary repos for Linux, cloud check is private feature
+- `revdepcheck.extras`: workflow and CLI improvements but similar limitations
 - `xfun::rev_check()`: fast parallel checking but doesn't install system dependencies
 
 Each solves part of the problem.
 
-None solve the whole problem for cloud-scale checking **for everyone**.
+None solves the whole problem for cloud-scale checking **for everyone**.
 
 ## Reinvent the wheel when it matters
 
-**Pro tip**: Seek product-market fit signals with the right audience.
+**Pro tip**: Seek early product-market fit signals from the right audience.
 
 I benefited from [sharing the news
 ](https://stat.ethz.ch/pipermail/r-package-devel/2025q4/012074.html)
 on the r-package-devel mailing list.
 
-![You know there's a library that does exactly what you're trying to do There's no need to reinvent the wheel. I dunno, man... Their wheels are pretty janky.](images/xkcd-927.png){fig-align="center" width="60%"}
+![](images/janky.png){fig-align="center" width="45%"}
 
 # Solution: revdeprun
 
@@ -132,19 +132,10 @@ on the r-package-devel mailing list.
 
 ## The solution
 
-- Use pak to install binary dependencies from Posit Public Package Manager (P3M)
+- Use `pak` to install binary dependencies from Posit Public Package Manager (P3M)
 - Use `xfun::rev_check()` for parallel checking
 - Wrap everything in a Rust CLI that handles setup automatically
 - One command from fresh Ubuntu to complete results
-
-## What it does
-
-- Installs the current release version of R for Ubuntu
-- Discovers all reverse dependencies from CRAN metadata
-- Installs system requirements for all reverse dependencies
-- Pre-installs binary dependencies from P3M into `revdep/library/`
-- Runs `xfun::rev_check()` with all available CPU cores
-- Generates summary reports for packages with check diffs
 
 ## Workflow
 
@@ -156,10 +147,19 @@ on the r-package-devel mailing list.
 
 ![](images/workflow-phase-2.svg){width=90%}
 
+## What it does
+
+- Installs the current release version of R for Ubuntu
+- Discovers all reverse dependencies from CRAN metadata
+- Installs system requirements for all reverse dependencies
+- Pre-installs binary dependencies from P3M into `revdep/library/`
+- Runs `xfun::rev_check()` with all available CPU cores
+- Generates summary reports for packages with check diffs
+
 ## Why Rust CLI?
 
-- R or Python may create circular or complicated runtime situations.
 - Shell scripts get messy fast. No proper error handling, testing, or distribution.
+- R or Python may create circular or complicated runtime situations.
 
 Rust gives you:
 
@@ -169,7 +169,7 @@ Rust gives you:
 - Progress bars (`indicatif`)
 - HTTP client (`reqwest`)
 
-## Installation
+## Get started
 
 Fresh Ubuntu instance. Four commands:
 
@@ -180,7 +180,7 @@ cargo install revdeprun
 revdeprun https://github.com/Rdatatable/data.table.git
 ```
 
-That's it. Go get coffee.
+That's it!
 
 ## Command-line options
 
@@ -270,7 +270,15 @@ Cloud instance specs:
 - Good developer tools make developers productive.
 - Automation saves time. Time saves money. Money enables more development.
 - The R community has excellent package development tools.
-- Commoditize cloud-scale automation is the future.
+  It can be better.
+- Launch early, iterate fast.
+
+## Infrastructures matter
+
+- Installing thousands of packages from source would take days
+- Posit Public Package Manager (P3M) provides pre-compiled binaries for Linux
+- `pak` can install these binaries in minutes instead of hours
+- This is what makes cloud-scale checking practical
 
 ## Complexity is real
 
@@ -279,19 +287,12 @@ Cloud instance specs:
 - If many smart people couldn't solve it completely, it's genuinely hard.
 - The devil is in the details: system dependencies, binary repos, parallel checking.
 
-## Binary packages matter
-
-- Installing thousands of packages from source would take days
-- Posit Public Package Manager (P3M) provides pre-compiled binaries for Linux
-- pak can install these binaries in minutes instead of hours
-- This is what makes cloud-scale checking practical
-
 ## What to optimize
 
 - In the age of AI-assisted coding, the question shifts.
-- Not: how do you build something?
-- But: what should you build?
+- Not: how do you build something? But: what should you build?
 - Choose problems that matter. Build tools that save time at scale.
+- Know what's out there. Try everything. Start building.
 
 ## Future directions
 
