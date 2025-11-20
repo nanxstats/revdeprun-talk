@@ -6,8 +6,8 @@ on:
 name: Render and Publish
 
 permissions:
-    contents: write
-    pages: write
+  contents: write
+  pages: write
 
 jobs:
   build-deploy:
