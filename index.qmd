@@ -25,7 +25,7 @@ title-slide-attributes:
 
 ## About me
 
-Hi, I'm Nan Xiao (@nanxstats)!
+Hi, I'm Nan Xiao ([@nanxstats](https://www.linkedin.com/in/nanxstats))!
 
 Passionate about writing fast and correct code + better developer tooling
 
