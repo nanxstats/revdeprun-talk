@@ -3,7 +3,7 @@ title: "Reverse dependency checks for everyone"
 subtitle: "Automate R integration testing at cloud scale"
 author: "Nan Xiao"
 date: "November 18, 2025"
-embed-resources: true
+embed-resources: false
 format:
   revealjs:
     theme: [default, custom.scss]
