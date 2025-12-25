@@ -2,7 +2,7 @@
 title: "Reverse dependency checks for everyone"
 subtitle: "Automate R integration testing at cloud scale"
 author: "Nan Xiao"
-date: "November 18, 2025"
+date: "December 24, 2025"
 embed-resources: false
 format:
   revealjs:
@@ -57,7 +57,7 @@ Package authors should check following [CRAN repository policy](https://cran.r-p
 
 CRAN will check independently after update submission:
 
-> package ggsci_4.1.0.tar.gz has been auto-processed and is pending an automated
+> package ggsci_4.2.0.tar.gz has been auto-processed and is pending an automated
 > reverse dependency check. This service will typically respond to you within
 > the next day. For technical reasons you may receive a second copy of this
 > message when a team member triggers a new check.
@@ -224,7 +224,7 @@ Rust gives you separation of concerns:
 ## Why data.table?
 
 - One of the most depended upon packages on CRAN (rank 15)
-- 1,723 reverse dependencies at the time of testing
+- 1,732 reverse dependencies at the time of testing
 - The maintainers were kind enough to try revdeprun and [report their experience](https://github.com/nanxstats/revdeprun/issues/24)
 - Perfect test case for cloud-scale checking
 
@@ -232,42 +232,42 @@ Rust gives you separation of concerns:
 
 Cloud instance specs:
 
-- 48 CPU cores (AMD EPYC 7713)
-- 96 GB DDR4 RAM
-- 2TB storage
+- 256 CPU cores (AMD EPYC 9845, launched Q4 2024)
+- 512 GB DDR5 RAM
+- 5 TB storage
 - Ubuntu 24.04 LTS
-- Cost: $1.55 per hour
+- Cost: $8.64 per hour
 
 ## Timeline: Setup phase
 
-00:00:00 - Started. Installing 4,395 packages required for checking.
+00:00:00 - Started. Setting up R and installing system dependencies.
 
-01:48:00 - Started updating all R packages. All 48 cores at 100%.
+00:14:00 - Started downloading 4,430 packages required for checking.
 
-01:55:00 - Started downloading 1,723 reverse dependencies from source.
+00:23:00 - Started installing packages.
 
-02:12:00 - Setup complete. Time for the real work.
+00:49:00 - `xfun::rev_check()` started preparation.
 
-![The moment checking begins](images/start.png){fig-align="center" width="60%"}
+00:53:00 - Started downloading all 1,732 reverse dependencies from source.
+
+00:56:00 - Setup complete. Time for the real work.
 
 ## Timeline: Checking phase
 
-02:12:00 - Started checking all 1,723 packages, twice.
+00:56:00 - Started checking all 1,732 packages, twice.
 
-05:20:00 - Halfway done. 890 packages remaining.
+01:28:00 - Halfway done. 866 packages remaining.
 
-08:55:00 - Finished. 37 packages reported check diffs.
+02:44:00 - Finished. 35 packages reported check diffs.
 
-![48 cores, 100% utilization, 0% headache.](images/btop.png){fig-align="center" width="70%"}
+![256 cores, 100% utilization, 0% headache.](images/btop.png){fig-align="center" width="70%"}
 
 ## Results
 
-- Total time: 8 hours 55 minutes
-- Total cost: `$14`
-- Setup time: 2 hours 12 minutes
-- Checking time: 6 hours 43 minutes
-
-![Crossing the finish line](images/finish.png){fig-align="center" width="60%"}
+- Total time: 2 hours 44 minutes
+- Total cost: `$24`
+- Setup time: 56 minutes
+- Checking time: 1 hour 48 minutes
 
 # Lessons learned
 
@@ -303,7 +303,9 @@ Cloud instance specs:
 ## Future directions
 
 - What about packages with 10,000+ reverse dependencies?
-- Can we optimize the 2+ hour setup phase? [rv](https://github.com/a2-ai/rv)?
+- Can we cut setup below 30 minutes by using
+  [r2u](https://eddelbuettel.github.io/r2u/) or
+  [rv](https://a2-ai.github.io/rv-docs/)?
 - Can we do nightly runs via CI/CD?
 - Can we improve reporting across different nightly runs?
 
@@ -325,4 +327,6 @@ These are open questions. Contributions welcome.
 
 Announcing revdeprun: <https://nanx.me/blog/post/revdeprun/>
 
-data.table speedrun: <https://nanx.me/blog/post/revdep-speedrun/>
+First data.table speedrun: <https://nanx.me/blog/post/revdep-speedrun/>
+
+Second data.table speedrun: <https://nanx.me/blog/post/revdeprun-2-1-0/>
