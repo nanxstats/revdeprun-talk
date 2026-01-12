@@ -323,6 +323,10 @@ These are open questions. Contributions welcome.
 
 <https://crates.io/crates/revdeprun>
 
+**Documentation**
+
+<https://nanx.me/revdeprun/>
+
 **Blog posts**
 
 Announcing revdeprun: <https://nanx.me/blog/post/revdeprun/>
