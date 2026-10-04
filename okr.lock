@@ -1,0 +1,47 @@
+version = 2
+okr-version = "0.1.10"
+generated = "2026-10-03T00:00:00Z"
+snapshot = "2026-10-03"
+config-digest = "sha256:f813ad87f9bcc79658359b530efc73405c73957252897a18733ebae26f6fc60d"
+environment-digest = "sha256:9465735fcec2810c17dfe71feedcd9d112451db76539e3f206bf278262802d08"
+
+[[package]]
+name = "pak"
+version = "0.11.1"
+source = "cran"
+url = "https://packagemanager.posit.co/cran/2026-10-03/src/contrib/pak_0.11.1.tar.gz"
+fetch-method = "tarball"
+tree-digest = "sha256:79b79b0a6b76400595ce9f816f54926b3124c4897ad2d5c9dd673bd0009fc786"
+license = "GPL-3"
+
+[[package]]
+name = "xfun"
+version = "0.61"
+source = "cran"
+url = "https://packagemanager.posit.co/cran/2026-10-03/src/contrib/xfun_0.61.tar.gz"
+fetch-method = "tarball"
+tree-digest = "sha256:7b9415eb976bd2ca5063d853e9755a00b0491cd19c4d32447f6b607656859217"
+license = "MIT + file LICENSE"
+
+[[reference]]
+name = "revdepcheck"
+source = "github::r-lib/revdepcheck"
+commit = "fe363843c340191f56aaf03514af4301f2ccf5c1"
+fetch-method = "forge-tarball"
+tree-digest = "sha256:9d986b6e8f715546936d6daca2ad484b587f4897316bc10f1c1d5881fe54f853"
+license = "LICENSE"
+
+[[reference]]
+name = "revdepcheck.extras"
+source = "github::HenrikBengtsson/revdepcheck.extras"
+commit = "de4263e0dba7f23da9250cbac0b4cad3fd5c3c4e"
+fetch-method = "forge-tarball"
+tree-digest = "sha256:8798d134c6942e9c6721e9c81b04bf2f3cc53a38af946ca2de08b6c8aadffaff"
+
+[[reference]]
+name = "revdeprun"
+source = "github::nanxstats/revdeprun"
+commit = "402c222d9f714dd87f6990bd2d7ac05846dd84ce"
+fetch-method = "forge-tarball"
+tree-digest = "sha256:d1748121f38b537aa4aaa312de3e7290a05d7b893802d8ece09ca989930a5050"
+license = "MIT"
