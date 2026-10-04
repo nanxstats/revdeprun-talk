@@ -2,18 +2,18 @@
 title: "Reverse dependency checks for everyone"
 subtitle: "Automate R integration testing at cloud scale"
 author: "Nan Xiao"
-date: "December 24, 2025"
+date: "October 2026"
+date-format: "MMMM YYYY"
 embed-resources: false
 format:
   revealjs:
     theme: [default, custom.scss]
-    mainfont: "Lato, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"
-    monofont: "Twilio Sans Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace"
+    mainfont: "Scoutie Sans, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"
+    monofont: "Liga Paper Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace"
     resources:
-      - fonts/Lato-VF.woff2
-      - fonts/Lato-Italic-VF.woff2
-      - fonts/TwilioSansMono-Retina.woff2
-    smaller: true
+      - fonts/ScoutieSans-VF.woff2
+      - fonts/ScoutieSans-Italic-VF.woff2
+      - fonts/LigaPaperMono-Regular.woff2
     slide-number: true
     scrollable: false
     code-line-numbers: false
@@ -57,7 +57,7 @@ Package authors should check following [CRAN repository policy](https://cran.r-p
 
 CRAN will check independently after update submission:
 
-> package ggsci_4.2.0.tar.gz has been auto-processed and is pending an automated
+> package ggsci_5.2.0.tar.gz has been auto-processed and is pending an automated
 > reverse dependency check. This service will typically respond to you within
 > the next day. For technical reasons you may receive a second copy of this
 > message when a team member triggers a new check.
@@ -167,13 +167,17 @@ on the r-package-devel mailing list.
 
 ## Get started
 
-Fresh Ubuntu instance. Four commands:
+Fresh Ubuntu instance:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-sudo apt-get update && sudo apt-get install -y build-essential
+source "$HOME/.cargo/env"
+sudo apt-get update && sudo apt-get install -y build-essential tmux
+
 cargo install revdeprun
-revdeprun https://github.com/Rdatatable/data.table.git
+tmux new-session -s revdeprun
+
+revdeprun https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
 ```
 
 That's it!

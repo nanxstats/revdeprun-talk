@@ -6,7 +6,7 @@ $body-bg: #f9f8f3;
 
 #title-slide .title {
   font-size: 2.75rem !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
 }
 
 #title-slide .subtitle {
@@ -45,31 +45,38 @@ $body-bg: #f9f8f3;
 }
 
 .reveal blockquote p {
-  font-size: 1.65rem;
+  font-size: 1.56rem;
 }
 
 /*-- scss:rules --*/
 
+.reveal .slides {
+  font-size: 26px;
+  /* Use smaller root font size */
+}
+
 @font-face {
   font-display: swap;
-  font-family: "Lato";
-  src: url("../../../../../fonts/Lato-VF.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "Scoutie Sans";
+  src: url("../../../../../fonts/ScoutieSans-VF.woff2") format("woff2");
+  font-weight: 200 800;
   font-style: normal;
+  font-feature-settings: "ss01", "ss04", "ss08";
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Lato";
-  src: url("../../../../../fonts/Lato-Italic-VF.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "Scoutie Sans";
+  src: url("../../../../../fonts/ScoutieSans-Italic-VF.woff2") format("woff2");
+  font-weight: 200 800;
   font-style: italic;
+  font-feature-settings: "ss01", "ss04", "ss08";
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Twilio Sans Mono";
-  src: url("../../../../../fonts/TwilioSansMono-Retina.woff2") format("woff2");
+  font-family: "Liga Paper Mono";
+  src: url("../../../../../fonts/LigaPaperMono-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
