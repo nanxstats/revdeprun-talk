@@ -34,14 +34,6 @@ Passionate about writing fast and correct code + better developer tooling
 - Work on intersection of statistical methodology and research software engineering
 - Author of ggsci, pkglite, shinygenui, and other 40+ R, Python, and Rust packages
 
-## Outline
-
-- The problem
-- Scale challenges
-- Solution: revdeprun
-- Validation: data.table
-- Lessons learned
-
 # The problem
 
 ## What makes R unique
