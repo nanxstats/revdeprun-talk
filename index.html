@@ -238,7 +238,7 @@ Nan Xiao
 
 </section>
 <section id="what-makes-r-unique" class="slide level2">
-<h2>What makes R unique?</h2>
+<h2>What makes R unique</h2>
 <ul>
 <li>25,000+ packages on CRAN today</li>
 <li>The CRAN social contract: We don’t break downstream code</li>
@@ -266,8 +266,8 @@ Nan Xiao
 <li>For a maintainer, making that happen can be terrifyingly laborious</li>
 </ul>
 </section>
-<section id="the-process" class="slide level2">
-<h2>The process</h2>
+<section id="whats-the-procedure" class="slide level2">
+<h2>What’s the procedure</h2>
 <ol type="1">
 <li>Find all reverse dependencies for your package</li>
 <li>Run <code>R CMD check</code> on each one, twice:
@@ -359,7 +359,7 @@ Nan Xiao
 <p><strong>Phase 1:</strong> Environment setup and dependency installation</p>
 <p><img data-src="images/workflow-phase-1.svg" style="width:100.0%"></p>
 <p><strong>Phase 2:</strong> Parallel checking of all reverse dependencies</p>
-<p><img data-src="images/workflow-phase-2.svg" style="width:90.0%"></p>
+<p><img data-src="images/workflow-phase-2.svg" style="width:100.0%"></p>
 </section>
 <section id="what-it-does" class="slide level2">
 <h2>What it does</h2>
@@ -374,36 +374,39 @@ Nan Xiao
 </section>
 <section id="get-started" class="slide level2">
 <h2>Get started</h2>
-<p>Fresh Ubuntu instance:</p>
+<p>Install Rust:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">--proto</span> <span class="st">'=https'</span> <span class="at">--tlsv1.2</span> <span class="at">-sSf</span> https://sh.rustup.rs <span class="kw">|</span> <span class="fu">sh</span></span>
 <span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="st">"</span><span class="va">$HOME</span><span class="st">/.cargo/env"</span></span>
-<span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install <span class="at">-y</span> build-essential tmux</span>
-<span id="cb1-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> install revdeprun</span>
-<span id="cb1-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new-session <span class="at">-s</span> revdeprun</span>
-<span id="cb1-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>That’s it!</p>
+<span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install <span class="at">-y</span> build-essential tmux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Install and run revdeprun:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">cargo</span> install revdeprun</span>
+<span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new-session <span class="at">-s</span> revdeprun</span>
+<span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Pack and transfer the check results:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> bundle YOUR-REPOSITORY</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span></span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> user@HOST:/home/user/ggsci-revdep.tar.zst .</span>
+<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xf</span> ggsci-revdep.tar.zst</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="command-line-options" class="slide level2">
 <h2>Command-line options</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic usage</span></span>
-<span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> https://github.com/USER/PACKAGE.git</span>
-<span id="cb2-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify R version</span></span>
-<span id="cb2-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> <span class="at">--r-version</span> devel https://github.com/USER/PACKAGE.git</span>
-<span id="cb2-6"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Control parallelism</span></span>
-<span id="cb2-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> <span class="at">--num-workers</span> 48 https://github.com/USER/PACKAGE.git</span>
-<span id="cb2-9"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Use local directory</span></span>
-<span id="cb2-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> ~/workspace/my-package</span>
-<span id="cb2-12"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Use source tarball</span></span>
-<span id="cb2-14"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> ~/packages/mypackage_1.2.3.tar.gz</span>
-<span id="cb2-15"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom workspace</span></span>
-<span id="cb2-17"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> <span class="at">--work-dir</span> /data/workspace https://github.com/USER/PACKAGE.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic usage</span></span>
+<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> https://github.com/USER/PACKAGE.git</span>
+<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify R version</span></span>
+<span id="cb5-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> <span class="at">--r-version</span> devel https://github.com/USER/PACKAGE.git</span>
+<span id="cb5-6"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Control parallelism</span></span>
+<span id="cb5-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> <span class="at">--num-workers</span> 48 https://github.com/USER/PACKAGE.git</span>
+<span id="cb5-9"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Use local directory</span></span>
+<span id="cb5-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> ~/workspace/my-package</span>
+<span id="cb5-12"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Use source tarball</span></span>
+<span id="cb5-14"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> ~/packages/mypackage_1.2.3.tar.gz</span>
+<span id="cb5-15"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom workspace</span></span>
+<span id="cb5-17"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">revdeprun</span> <span class="at">--work-dir</span> /data/workspace https://github.com/USER/PACKAGE.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="why-rust-cli" class="slide level2">
 <h2>Why Rust CLI?</h2>
