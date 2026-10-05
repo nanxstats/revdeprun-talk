@@ -306,7 +306,7 @@ Cloud instance specs:
 
 ## What to optimize
 
-- AI agents ship code fast. Human verification is the new bottleneck.
+- AI agents ship code fast. Human judgement is the new bottleneck.
 - How do you build something? `->` What should you build?
 - Choose problems that matter. Build tools that save time at scale.
 - Know what's out there. Try everything. Start building.
