@@ -3,7 +3,7 @@ title: "Reverse dependency checks for everyone"
 subtitle: "Automate R integration testing at cloud scale"
 author: "Nan Xiao"
 date: "October 2026"
-date-format: "MMMM YYYY"
+date-format: "MMM YYYY"
 embed-resources: false
 format:
   revealjs:
