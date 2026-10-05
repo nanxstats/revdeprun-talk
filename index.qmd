@@ -44,7 +44,7 @@ Passionate about writing fast and correct code + better developer tooling
 
 # The problem
 
-## What makes R unique?
+## What makes R unique
 
 - 25,000+ packages on CRAN today
 - The CRAN social contract: We don't break downstream code
@@ -75,7 +75,7 @@ CRAN will check independently after update submission:
 - For a user, `library(ggplot2)` just works
 - For a maintainer, making that happen can be terrifyingly laborious
 
-## The process
+## What's the procedure
 
 1. Find all reverse dependencies for your package
 1. Run `R CMD check` on each one, twice:
@@ -155,7 +155,7 @@ on the r-package-devel mailing list.
 
 **Phase 2:** Parallel checking of all reverse dependencies
 
-![](images/workflow-phase-2.svg){width=90%}
+![](images/workflow-phase-2.svg){width=100%}
 
 ## What it does
 
@@ -168,20 +168,34 @@ on the r-package-devel mailing list.
 
 ## Get started
 
-Fresh Ubuntu instance:
+Install Rust:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 sudo apt-get update && sudo apt-get install -y build-essential tmux
+```
 
+Install and run revdeprun:
+
+```bash
 cargo install revdeprun
 tmux new-session -s revdeprun
-
 revdeprun https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
 ```
 
-That's it!
+Pack and transfer the check results:
+
+```bash
+revdeprun bundle YOUR-REPOSITORY
+```
+
+<span></span>
+
+```bash
+scp user@HOST:/home/user/ggsci-revdep.tar.zst .
+tar -xf ggsci-revdep.tar.zst
+```
 
 ## Command-line options
 
