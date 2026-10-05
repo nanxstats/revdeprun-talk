@@ -8,6 +8,7 @@ embed-resources: false
 format:
   revealjs:
     theme: [default, custom.scss]
+    syntax-highlighting: github
     mainfont: "Scoutie Sans, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji"
     monofont: "Liga Paper Mono, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace"
     resources:
@@ -30,8 +31,8 @@ Hi, I'm Nan Xiao ([@nanxstats](https://www.linkedin.com/in/nanxstats))!
 Passionate about writing fast and correct code + better developer tooling
 
 - Learned from wholesome frequentist and Bayesian statisticians
-- Creator of ggsci, pkglite, tinytopics, and other R, Python, TypeScript, Rust packages
 - Work on intersection of statistical methodology and research software engineering
+- Author of ggsci, pkglite, shinygenui, and other 40+ R, Python, and Rust packages
 
 ## Outline
 
@@ -45,7 +46,7 @@ Passionate about writing fast and correct code + better developer tooling
 
 ## What makes R unique?
 
-- 23,000+ packages on CRAN today
+- 25,000+ packages on CRAN today
 - The CRAN social contract: We don't break downstream code
 - Any upstream package updates must check that downstream packages still work
 
@@ -278,7 +279,7 @@ Cloud instance specs:
 ## Developer tools matter
 
 - Good developer tools make developers productive.
-- Automation saves time. Time saves money. Money enables more development.
+- Automation saves time. Time saves budget. Budget enables more development.
 - The R community has excellent package development tools.
   It can be better.
 - Launch early, iterate fast.
@@ -299,23 +300,18 @@ Cloud instance specs:
 
 ## What to optimize
 
-- AI writes code fast. We need to verify it even faster.
-- Not: how do you build something? But: what should you build?
+- AI writes code fast. Humans need to verify it even faster.
+- How do you build something? `->` What should you build?
 - Choose problems that matter. Build tools that save time at scale.
 - Know what's out there. Try everything. Start building.
 
 ## Future directions
 
 - What about packages with 10,000+ reverse dependencies?
-- Can we cut setup below 30 minutes by using
-  [r2u](https://eddelbuettel.github.io/r2u/) or
-  [rv](https://a2-ai.github.io/rv-docs/)?
 - Can we do nightly runs via CI/CD?
 - Can we improve reporting across different nightly runs?
 
-These are open questions. Contributions welcome.
-
-# Questions?
+These are open questions. Contributions welcome!
 
 ## Resources
 
